@@ -38,7 +38,6 @@ public class Game_JFrame extends javax.swing.JFrame {
         initAnswerButtons();
         initTasks();
         cardLayout = (CardLayout)(ParentPanel.getLayout());
-        displayTask(index);
     }
     
 //    Init functions
@@ -537,6 +536,9 @@ public class Game_JFrame extends javax.swing.JFrame {
         if (index == 0) return;
         displayTask(--index);
         checkPreviousSelection();
+        if (index != tasks.length - 1 && nextQuestionButton_.getText().equals("Finish and See The Results")) {
+            nextQuestionButton_.setText("NEXT");
+        }
     }//GEN-LAST:event_previousQuestionButton_ActionPerformed
 
     private void nextQuestionButton_ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextQuestionButton_ActionPerformed
@@ -558,9 +560,6 @@ public class Game_JFrame extends javax.swing.JFrame {
 
         if (index == tasks.length - 1) {
             nextQuestionButton_.setText("Finish and See The Results");
-        }
-        if (index != tasks.length - 1 && nextQuestionButton_.getText().equals("Finish and See The Results")) {
-            nextQuestionButton_.setText("NEXT");
         }
 
         answerButtonsGroup.clearSelection();
